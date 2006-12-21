@@ -1,0 +1,4 @@
+Revision history for Perl extension Tie::Tk::Text.
+
+0.01 (2006-11-19)
+    * original version released on CPAN; provides *readonly* access

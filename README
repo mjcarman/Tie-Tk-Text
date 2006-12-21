@@ -1,0 +1,23 @@
+Tie-Tk-Text
+===========
+
+Access Tk::Text or Tk::ROText widgets as arrays.
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+None.
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2006 by Michael J. Carman
+
+This library is free software under the terms of the Perl Artistic License.
