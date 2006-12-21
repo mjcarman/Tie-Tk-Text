@@ -1,4 +1,7 @@
 Revision history for Perl extension Tie::Tk::Text.
 
+0.90 (2006-11-21)
+    * provides all methods for tied arrays (note: EXTEND is a no-op)
+
 0.01 (2006-11-19)
     * original version released on CPAN; provides *readonly* access
