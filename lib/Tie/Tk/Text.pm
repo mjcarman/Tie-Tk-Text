@@ -1,12 +1,12 @@
 #===============================================================================
 # Tie/Tk/Text.pm
-# Last Modified: 11/21/2006 10:55AM
+# Last Modified: 11/29/2006 10:20AM
 #===============================================================================
 package Tie::Tk::Text;
 use strict;
 
 use vars qw'$VERSION';
-$VERSION = '0.90';
+$VERSION = '0.91';
 
 # Notes:
 # * Text widgets use 1-based indexing so line number = array index + 1
