@@ -1,12 +1,11 @@
 #===============================================================================
 # Tie/Tk/Text.pm
-# Last Modified: 11/29/2006 10:20AM
 #===============================================================================
 package Tie::Tk::Text;
 use strict;
 
 use vars qw'$VERSION';
-$VERSION = '0.91';
+$VERSION = '0.92';
 
 # Notes:
 # * Text widgets use 1-based indexing so line number = array index + 1
@@ -84,7 +83,7 @@ sub DELETE {
 	my $idx  = shift;
 	my $text = $self->EXISTS($idx) ? $self->FETCH($idx) : undef;
 
-	my $l = $idx+1;
+	my $l = $idx + 1;
 	$$self->delete("$l.0", "$l.0 lineend"); # don't delete the \n
 
 	# collapse trailing "undef" (\n) values
@@ -169,7 +168,7 @@ __END__
 
 =head1 NAME
 
-Tie::Tk::Text - Access Tk::Text or Tk::ROText widgets as arrays.
+Tie::Tk::Text - Access Tk text widgets as arrays.
 
 =head1 SYNOPSIS
 
@@ -184,15 +183,19 @@ Tie::Tk::Text - Access Tk::Text or Tk::ROText widgets as arrays.
 
 =head1 DESCRIPTION
 
-This module defines a class for tie()ing Tk::Text and Tk::ROText widgets to an 
+This module defines a class for tie()ing Tk text widgets to an 
 array, allowing them to be accessed as if they were an array of lines.
 
 It's not expected that anyone will actually want to populate and manipulate 
-their Text widgets this way, though you are of course free to do so. This module 
-was created to make Text widgets accessible to functions that expect an array 
+their text widgets this way, though you are of course free to do so. This module 
+was created to make text widgets accessible to functions that expect an array 
 reference as their input. (e.g. Algorithm::Diff::sdiff) You can do that with 
 read-only support (FETCH and FETCHSIZE). All of the methods (PUSH, POP, STORE, 
 etc.) are included for completeness.
+
+Note: This documentation refers to "Tk text" widgets rather than "Tk::Text" 
+ones. That's because it supports anything that uses the same API as a Tk text 
+widget. It works with Perl/Tk and Tkx and should work with Tcl::Tk as well.
 
 =head1 CAVEATS
 
@@ -207,16 +210,16 @@ replace line four with "foo\n" and B<insert> "bar\n" before line five.
 
 =head1 LIMITATIONS
 
-There's no support for tags or a lot of other things that you can do with Text 
+There's no support for tags or a lot of other things that you can do with text 
 widgets. There isn't supposed to be. This is not a bug.
 
 =head1 AUTHOR
 
-Michael J. Carman <mjcarman@mchsi.com>
+Michael J. Carman C<< <mjcarman@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2006 by Michael J. Carman
+Copyright (C) 2006,2009 by Michael J. Carman
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

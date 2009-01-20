@@ -1,19 +1,16 @@
 #===============================================================================
-# Tie-Tk-Text.t
-# Last Modified: 11/21/2006 10:54AM
-#===============================================================================
+# Tie-Tk-Text.pl
 # Test suite for Tie::Tk::Text
 #===============================================================================
-use Tk;
-use Test::More tests => 40;
+# This is a helper file. It should be invoked via C<do 'Tie-Tk-Text.pl'>
+# It assumes that it has been set up via:
+#   use Test::More;
+#   use vars qw'$w';
+#   $w = <some type of Tk-ish text widget>
+#===============================================================================
+plan tests => 39;
 
-BEGIN { use_ok('Tie::Tk::Text') };
-
-my $mw = MainWindow->new();
-my $w  = $mw->Text()->pack();
-my @text;
-
-tie @text, 'Tie::Tk::Text', $w;
+tie my @text, 'Tie::Tk::Text', $w;
 is(${tied(@text)}, $w, 'TIEARRAY');
 
 
@@ -120,3 +117,5 @@ $w->delete('1.0', 'end');
 $w->insert('end', "1\n2\n3\n4\n5\n6\n");
 is_deeply([splice(@text, -5, -2)], ["2\n", "3\n", "4\n"], 'SPLICE(ARRAY, -OFFSET, -LENGTH) return list');
 is($w->get('1.0', 'end'),          "1\n5\n6\n\n",         'SPLICE(ARRAY, -OFFSET, -LENGTH) remainder');
+
+1;
