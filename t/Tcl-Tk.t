@@ -13,7 +13,11 @@ use vars qw($w);  # C<my $w> wouldn't be visible in C<do 'file'>
 
 if (eval { require Tcl::Tk }) {
 	my $file = catfile($FindBin::Bin, 'Tie-Tk-Text.pl');
-	my $mw   = Tcl::Tk->new->mainwindow();
+	my $mw   = eval { Tcl::Tk->new->mainwindow() };
+
+	unless ($mw) {
+		plan skip_all => "Can't create main window";
+	}
 
 	$w = $mw->Text();
 	do $file;
